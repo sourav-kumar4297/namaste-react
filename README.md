@@ -1,2 +1,1 @@
-# Namaste react
-vikram
+ Namaste react
