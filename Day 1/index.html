@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Day 1</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="root">
-        <h2>
-            Hello from HTML 5.
-        </h2>
+    <div class="root1">
+        <h2>Hello World from  html</h2>
     </div>
-    
+    <div class="root">
+        
+    </div>
+    <div class="reactroot">
+
+    </div>
+    <script>
+        const root = document.querySelector(".root");
+        root.innerHTML = "<h3>Hello World from Js</h3>";
+    </script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="index.js"></script>
 </body>
+
 </html>
