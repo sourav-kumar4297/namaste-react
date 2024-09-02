@@ -23,8 +23,6 @@ import ReactDOM from "react-dom/client";
 
 
 
-
-
 const reactroot = ReactDOM.createRoot(document.querySelector(".root"));
 const element = React.createElement(
   "h3",
