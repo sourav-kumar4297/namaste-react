@@ -35,7 +35,7 @@ const Main = () => {
 
   };
 
-  return (
+  return (allRestaurants.length === 0) ? <Shrimmer/> : (
     <>
       <div className="main">
         <div className="search">
