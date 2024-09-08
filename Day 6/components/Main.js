@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import Shrimmer from "./Shrimmer";
 
 const Main = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchText, setsearchText] = useState("");
+  const [filteredRestraurants, setFilteredRestraurants] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState([]);
 
-
-  function filterData(searchTerm, searchResults) {
-    const filterData = searchResults.filter((item) =>
-      item.info.name.toLowerCase().includes(searchTerm.toLowerCase())
+  function filterData(searchText, allRestaurants) {
+    const filterData = allRestaurants.filter((item) =>
+      item.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
+    console.log(filterData)
     return filterData;
   }
 
@@ -20,17 +22,19 @@ const Main = () => {
 
   const getRestaurants = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-
     // optional chaining
-    setSearchResults(
+    setAllRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilteredRestraurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+
   };
 
- 
   return (
     <>
       <div className="main">
@@ -38,14 +42,14 @@ const Main = () => {
           <input
             type="text"
             placeholder="Search"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchText}
+            onChange={(e) => setsearchText(e.target.value)}
           />
           <button
             type="submit"
             onClick={() => {
-              const data = filterData(searchTerm, productList);
-              setSearchResults(data);
+              const data = filterData(searchText,allRestaurants);
+              setFilteredRestraurants(data);
             }}
           >
             Search
@@ -53,7 +57,7 @@ const Main = () => {
         </div>
         {/* <div className="banner">Image is in the background</div></div> */}
         <div className="product-list">
-          {searchResults.map((item) => (
+          {filteredRestraurants.map((item) => (
             <ProductCard product={item} key={item.info.id} />
           ))}
         </div>
