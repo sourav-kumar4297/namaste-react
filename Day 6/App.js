@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 
+
 const AppLayout = () => {
   return (
     <>
@@ -14,6 +15,8 @@ const AppLayout = () => {
     </>
   );
 };
+
+
 
 const root = ReactDOM.createRoot(document.querySelector(".root"));
 root.render(<AppLayout />);
