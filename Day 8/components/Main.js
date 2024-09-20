@@ -11,7 +11,7 @@ const Main = () => {
     const filterData = allRestaurants.filter((item) =>
       item.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
-    console.log(filterData)
+    // console.log(filterData)
     return filterData;
   }
 

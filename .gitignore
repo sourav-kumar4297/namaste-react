@@ -1,5 +1,10 @@
-node_modules/
-.parcel-cache/
-dist/
-.env/
-constants.js/
+constants.js
+
+node_modules
+
+.parcel-cache
+
+dist
+
+**/.env
+
